@@ -1,5 +1,6 @@
 package com.bridgelabz.controller;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import com.bridgelabz.services.AddressBookService;
@@ -10,7 +11,12 @@ public class AddressBook {
 		System.out.println("<-------------Welcome To Address Book----------------->");
 		
 		Scanner scanner = new Scanner(System.in);
-		AddressBookService services = new AddressBookService();
+		HashMap<String, AddressBookService> services = new HashMap<>();
+		System.out.println("*****Enter Unique Address Book Name*****");
+		String addressBookNameAsKey = scanner.nextLine().toUpperCase();
+		System.out.println(addressBookNameAsKey);
+		AddressBookService addressBookNameValue = new AddressBookService();
+		services.put(addressBookNameAsKey, addressBookNameValue);
 		
 		boolean exit = false;
 		System.out.println("Enter Your Choice");
@@ -22,15 +28,15 @@ public class AddressBook {
 			switch (choice) {
 			case 1:
 				System.out.println("Add New Contact");
-				services.createContact(null);
+				services.get(addressBookNameAsKey).createContact(null);
 				break;
 			case 2:
 				System.out.println("Update Contact");
-				services.editContact();
+				services.get(addressBookNameAsKey).editContact();
 				break;
 			case 3:
 				System.out.println("Delete Contact");
-				services.deleteContactByName();
+				services.get(addressBookNameAsKey).deleteContactByName();
 				break;
 			case 4:
 				exit = true;
@@ -41,7 +47,7 @@ public class AddressBook {
 				break;
 			}
 		}
-
+		System.out.println("You are out of choice of multiple addressbook");
 	}
 
 }
