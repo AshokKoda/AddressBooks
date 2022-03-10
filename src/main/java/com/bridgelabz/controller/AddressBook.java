@@ -9,7 +9,7 @@ public class AddressBook {
 		
 		AddressBookService services = new AddressBookService();
 		System.out.println("Create New Contact");
-		//services.createContact(null);
+		services.createContact(null);
 
 	}
 
