@@ -28,7 +28,7 @@ public class AddressBook {
 			switch (choice) {
 			case 1:
 				System.out.println("Add New Contact");
-				services.get(addressBookNameAsKey).createContact(null);
+				services.get(addressBookNameAsKey).addContact(null);
 				break;
 			case 2:
 				System.out.println("Update Contact");
