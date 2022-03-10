@@ -1,5 +1,7 @@
 package com.bridgelabz.controller;
 
+import java.util.Scanner;
+
 import com.bridgelabz.services.AddressBookService;
 
 public class AddressBook {
@@ -7,11 +9,38 @@ public class AddressBook {
 	public static void main(String[] args) {
 		System.out.println("<-------------Welcome To Address Book----------------->");
 		
+		Scanner scanner = new Scanner(System.in);
 		AddressBookService services = new AddressBookService();
-		System.out.println("Create New Contact");
-		services.createContact(null);
-		services.editContact();
-		services.deleteContactByName();
+		
+		boolean exit = false;
+		System.out.println("Enter Your Choice");
+		
+		while (!exit) {
+			System.out.println("1.Create/Add Contact\t 2.Update Contact\t 3.Delete Contact\t 4.Quit");
+			int choice = scanner.nextInt();
+			
+			switch (choice) {
+			case 1:
+				System.out.println("Add New Contact");
+				services.createContact(null);
+				break;
+			case 2:
+				System.out.println("Update Contact");
+				services.editContact();
+				break;
+			case 3:
+				System.out.println("Delete Contact");
+				services.deleteContactByName();
+				break;
+			case 4:
+				exit = true;
+				System.out.println("Thank you.....!!!");
+				break;
+			default:
+				System.out.println("Application is quit...");
+				break;
+			}
+		}
 
 	}
 
