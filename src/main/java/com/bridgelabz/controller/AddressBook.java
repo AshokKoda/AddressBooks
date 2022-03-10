@@ -11,6 +11,7 @@ public class AddressBook {
 		System.out.println("Create New Contact");
 		services.createContact(null);
 		services.editContact();
+		services.deleteContactByName();
 
 	}
 

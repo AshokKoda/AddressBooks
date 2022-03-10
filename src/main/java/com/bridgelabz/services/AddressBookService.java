@@ -71,36 +71,57 @@ public class AddressBookService {
 				System.out.println("Enter first Name");
 				String firstName1 = scanner.next();
 				contacts.setFirstName(firstName1);
-				
+
 				System.out.println("Enter last Name");
 				String lastName = scanner.next();
 				contacts.setLastName(lastName);
-				
+
 				System.out.println("Enter Email");
 				String email = scanner.next();
 				contacts.setEmail(email);
-				
+
 				System.out.println("Enter phone number");
 				String phoneNumber = scanner.next();
 				contacts.setPhoneNumber(phoneNumber);
-				
+
 				System.out.println("Enter state");
 				String state = scanner.next();
 				contacts.setState(state);
-				
+
 				System.out.println("Enter city");
 				String city = scanner.next();
 				contacts.setCity(city);
-				
+
 				System.out.println("Enter zip");
 				String zip = scanner.next();
 				contacts.setZip(zip);
-				
+
 				printContacts();
-				
+
 			} else {
 				System.out.println("Person not found");
 			}
 		}
+	}
+
+	// Delete contacts
+	public void deleteContactByName() {
+		try {
+			System.out.println("Enter first name for delete contact:");
+			String firstName = scanner.next();
+
+			Iterator<Contact> iterator = listContact.listIterator();
+
+			while (iterator.hasNext()) {
+				Contact contacts = iterator.next();
+				if (firstName.equals(contacts.getFirstName())) {
+					listContact.remove(contacts);
+					System.out.println("Contact: " + contacts.getFirstName() + " " + "deleted successfully...");
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		printContacts();
 	}
 }
