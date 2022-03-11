@@ -190,7 +190,7 @@ public class AddressBookService {
 				System.out.println("View persons contact by searching city or state :");
 				System.out.println(result);
 			} else {
-				//System.out.println("No such a records in adddressbook");
+				System.out.println("No such a records in adddressbook");
 			}
 		}
 	}
