@@ -22,7 +22,7 @@ public class AddressBook {
 		System.out.println("Enter Your Choice");
 		
 		while (!exit) {
-			System.out.println("1.Create/Add Contact\t 2.Update Contact\t 3.Delete Contact\t 4.Quit");
+			System.out.println("1.Create/Add Contact\t 2.Update Contact\t 3.Delete Contact\t 4.Search Contact\t 5.Quit");
 			int choice = scanner.nextInt();
 			
 			switch (choice) {
@@ -39,6 +39,10 @@ public class AddressBook {
 				services.get(addressBookNameAsKey).deleteContactByName();
 				break;
 			case 4:
+				System.out.println("Search Contact");
+				services.get(addressBookNameAsKey).searchContact();
+				break;
+			case 5:
 				exit = true;
 				System.out.println("Thank you.....!!!");
 				break;
