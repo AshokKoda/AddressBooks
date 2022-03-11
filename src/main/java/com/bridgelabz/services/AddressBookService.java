@@ -47,46 +47,50 @@ public class AddressBookService {
 
 	// Adding new contact method
 	public void addContact(Contact contact) {
-		createContact();
-		System.out.println("Enter firstname and lastname");
-		String name = scanner.next() + "" + scanner.next();
-		
-		Iterator<Contact> iterator = listContact.listIterator();
-		
-		while (iterator.hasNext()) {
-			Contact contacts = iterator.next();
-			if (name.equals(contacts.getFirstName() + "" + contacts.getLastName())) {
-				System.out.println("Duplicate entry add new contact press 1 ");
-			}else {
-				System.out.println("Enter Person Details:");
+		try {
+			createContact();
+			System.out.println("Enter firstname and lastname");
+			String name = scanner.next() + "" + scanner.next();
 
-				System.out.println("Enter first Name");
-				String firstName = scanner.next();
+			Iterator<Contact> iterator = listContact.listIterator();
 
-				System.out.println("Enter last Name");
-				String lastName = scanner.next();
+			while (iterator.hasNext()) {
+				Contact contacts = iterator.next();
+				if (name.equals(contacts.getFirstName() + "" + contacts.getLastName())) {
+					System.out.println("Duplicate entry add new contact press 1 ");
+				} else {
+					System.out.println("Enter Person Details:");
 
-				System.out.println("Enter Email");
-				String email = scanner.next();
+					System.out.println("Enter first Name");
+					String firstName = scanner.next();
 
-				System.out.println("Enter phone number");
-				String phoneNumber = scanner.next();
+					System.out.println("Enter last Name");
+					String lastName = scanner.next();
 
-				System.out.println("Enter address");
-				String address = scanner.next();
+					System.out.println("Enter Email");
+					String email = scanner.next();
 
-				System.out.println("Enter state");
-				String state = scanner.next();
+					System.out.println("Enter phone number");
+					String phoneNumber = scanner.next();
 
-				System.out.println("Enter city");
-				String city = scanner.next();
+					System.out.println("Enter address");
+					String address = scanner.next();
 
-				System.out.println("Enter zip");
-				String zip = scanner.next();
+					System.out.println("Enter state");
+					String state = scanner.next();
 
-				listContact.add(new Contact(firstName, lastName, email, phoneNumber, address, state, city, zip));
-				printContacts();
+					System.out.println("Enter city");
+					String city = scanner.next();
+
+					System.out.println("Enter zip");
+					String zip = scanner.next();
+
+					listContact.add(new Contact(firstName, lastName, email, phoneNumber, address, state, city, zip));
+					printContacts();
+				}
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 
@@ -169,16 +173,21 @@ public class AddressBookService {
 		}
 		printContacts();
 	}
-	
-	//Search contact with city name
+
+	// Search contact with city name
 	public void searchContact() {
 		System.out.println("Enter city name ");
 		String city = scanner.next();
 		System.out.println("Enter state name");
 		String state = scanner.next();
-		
+
+		if (listContact.isEmpty()) {
+			System.out.println("No Records!!!");
+		}
+
 		for (Contact result : listContact) {
 			if (city.equalsIgnoreCase(result.getCity()) || state.equalsIgnoreCase(result.getState())) {
+				System.out.println("View persons contact by searching city or state :");
 				System.out.println(result);
 			} else {
 				System.out.println("No such a records in adddressbook");

@@ -41,6 +41,7 @@ public class AddressBook {
 			case 4:
 				System.out.println("Search Contact");
 				services.get(addressBookNameAsKey).searchContact();
+				System.out.println("AddressBook name is : " + addressBookNameAsKey);
 				break;
 			case 5:
 				exit = true;
